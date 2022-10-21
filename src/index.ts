@@ -3,10 +3,10 @@ require('dotenv').config();
 //import cors from 'cors';
 import express from 'express';
 import { PORT } from "./config/constants";
-/*import { adminRouter } from './routes/admins';
-import { articleRouter } from './routes/articles';
-import { categorieRouter } from './routes/categories';*/
 import { memberRouter } from './routes/members';
+import { sessionRouter } from './routes/sessions';
+import { eventRouter } from './routes/events';
+/*import { adminRouter } from './routes/admins';*/
 
 let bodyParser = require('body-parser');
 
@@ -28,24 +28,25 @@ app.get("/member/show/:id", memberRouter);
 app.post("/member/add/:id", memberRouter);
 app.post("/member/up/:id", memberRouter);
 app.delete("/member/del/:id", memberRouter);
-/*
-app.get("/article", articleRouter);
-app.get("/article/show/:id", articleRouter);
-app.post("/article/add/:id", jsonParser, articleRouter);
-app.post("/article/up/:id", articleRouter);
-app.delete("/article/del/:id", articleRouter);
 
+app.get("/session", sessionRouter);
+app.get("/session/show/:id", sessionRouter);
+app.post("/session/add/:id", jsonParser, sessionRouter);
+app.post("/session/up/:id", sessionRouter);
+app.delete("/session/del/:id", sessionRouter);
+
+app.get("/event", eventRouter);
+app.get("/event/show/:id", eventRouter);
+app.post("/event/add/:id", jsonParser, eventRouter);
+app.post("/event/up/:id", eventRouter);
+app.delete("/event/del/:id", eventRouter);
+/*
 app.get("/admin", adminRouter);
 app.get("/admin/show/:id", adminRouter);
 app.post("/admin/add/:id", jsonParser, adminRouter);
 app.post("/admin/up/:id", adminRouter);
 app.delete("/admin/del/:id", adminRouter);
 
-app.get("/categorie", categorieRouter);
-app.get("/categorie/show/:id", categorieRouter);
-app.post("/categorie/add/:id", jsonParser, categorieRouter);
-app.post("/categorie/up/:id", categorieRouter);
-app.delete("/categorie/del/:id", categorieRouter);
 */
 app.listen(PORT, () => {
     console.log(`Le serveur écoute sur le port : ${PORT}`);
