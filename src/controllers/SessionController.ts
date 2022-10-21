@@ -1,21 +1,21 @@
 import { Request, Response } from "express";
 import { CrudController } from "./CrudController";
 import { Session } from "../models/sessions";
-import { sequelize } from "../config/database";
+//import { sequelize } from "../config/database";
 
 export class SessionController extends CrudController {
 
     public read(req: Request, res: Response): void {
         Session.findAll().then(session => res.json(session));
-        sequelize
-            .authenticate()
-            .then(() => {
-                console.log("La connection c'est établie avec succès.");
-            })
-            .catch((err: any) => {
-                console.error("Impossible de se connecter à la base de données.", err);
-            });
-        res.json({ message: 'boum boum !' });
+        /* sequelize
+             .authenticate()
+             .then(() => {
+                 console.log("La connection c'est établie avec succès.");
+             })
+             .catch((err: any) => {
+                 console.error("Impossible de se connecter à la base de données.", err);
+             });
+         res.json({ message: 'boum boum !' });*/
     }
     public show(req: Request, res: Response): void {
         Session.findOne({ 'where': { session_id: req.params.id } }).then(session => res.json(session));
