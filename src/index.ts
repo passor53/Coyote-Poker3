@@ -5,8 +5,8 @@ import express from 'express';
 import { PORT } from "./config/constants";
 /*import { adminRouter } from './routes/admins';
 import { articleRouter } from './routes/articles';
-import { categorieRouter } from './routes/categories';
-import { clientRouter } from './routes/clients';*/
+import { categorieRouter } from './routes/categories';*/
+import { memberRouter } from './routes/members';
 
 let bodyParser = require('body-parser');
 
@@ -23,12 +23,12 @@ const allowedOrigins = ['http://localhost:8000'];
 
 app.get("/", (req, res) => res.send("Hello World"));
 
-/*app.get("/client", clientRouter);
-app.get("/client/show/:id", clientRouter);
-app.post("/client/add/:id", clientRouter);
-app.post("/client/up/:id", clientRouter);
-app.delete("/client/del/:id", clientRouter);
-
+app.get("/member", memberRouter);
+app.get("/member/show/:id", memberRouter);
+app.post("/member/add/:id", memberRouter);
+app.post("/member/up/:id", memberRouter);
+app.delete("/member/del/:id", memberRouter);
+/*
 app.get("/article", articleRouter);
 app.get("/article/show/:id", articleRouter);
 app.post("/article/add/:id", jsonParser, articleRouter);

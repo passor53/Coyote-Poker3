@@ -9,8 +9,8 @@ const express_1 = __importDefault(require("express"));
 const constants_1 = require("./config/constants");
 /*import { adminRouter } from './routes/admins';
 import { articleRouter } from './routes/articles';
-import { categorieRouter } from './routes/categories';
-import { clientRouter } from './routes/clients';*/
+import { categorieRouter } from './routes/categories';*/
+const members_1 = require("./routes/members");
 let bodyParser = require('body-parser');
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
@@ -21,12 +21,12 @@ const allowedOrigins = ['http://localhost:8000'];
 };*/
 //app.use(cors(options));
 app.get("/", (req, res) => res.send("Hello World"));
-/*app.get("/client", clientRouter);
-app.get("/client/show/:id", clientRouter);
-app.post("/client/add/:id", clientRouter);
-app.post("/client/up/:id", clientRouter);
-app.delete("/client/del/:id", clientRouter);
-
+app.get("/member", members_1.memberRouter);
+app.get("/member/show/:id", members_1.memberRouter);
+app.post("/member/add/:id", members_1.memberRouter);
+app.post("/member/up/:id", members_1.memberRouter);
+app.delete("/member/del/:id", members_1.memberRouter);
+/*
 app.get("/article", articleRouter);
 app.get("/article/show/:id", articleRouter);
 app.post("/article/add/:id", jsonParser, articleRouter);
