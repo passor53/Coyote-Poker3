@@ -21,6 +21,7 @@ Member.init({
     },
     pseudo: {
         type: sequelize_1.DataTypes.STRING(39),
+        allowNull: false
     },
     mail: {
         type: sequelize_1.DataTypes.STRING(120),
@@ -30,6 +31,7 @@ Member.init({
     },
     password: {
         type: sequelize_1.DataTypes.STRING(25),
+        allowNull: false
     },
     address: {
         type: sequelize_1.DataTypes.STRING(200),

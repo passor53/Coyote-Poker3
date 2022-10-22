@@ -20,12 +20,14 @@ Member.init({
     },
     name: {
         type: DataTypes.STRING(39),
+
     },
     firstname: {
         type: DataTypes.STRING(39),
     },
     pseudo: {
         type: DataTypes.STRING(39),
+        allowNull: false
     },
     mail: {
         type: DataTypes.STRING(120),
@@ -36,6 +38,7 @@ Member.init({
     },
     password: {
         type: DataTypes.STRING(25),
+        allowNull: false
     },
     address: {
         type: DataTypes.STRING(200),

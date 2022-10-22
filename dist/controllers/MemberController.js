@@ -6,7 +6,7 @@ const members_1 = require("../models/members");
 //import { sequelize } from "../config/database";
 class MemberController extends CrudController_1.CrudController {
     read(req, res) {
-        members_1.Member.findAll().then(member => res.json(member));
+        members_1.Member.findAll().then(members => res.json(members));
         /* sequelize
              .authenticate()
              .then(() => {
@@ -18,16 +18,16 @@ class MemberController extends CrudController_1.CrudController {
          res.json({ message: 'boum boum !' });*/
     }
     show(req, res) {
-        members_1.Member.findOne({ 'where': { member_id: req.params.id } }).then(member => res.json(member));
+        members_1.Member.findOne({ 'where': { id_members: req.params.id } }).then(members => res.json(members));
     }
     create(req, res) {
-        members_1.Member.create(req.body).then(member => res.json(member));
+        members_1.Member.create(req.body).then(members => res.json(members));
     }
     update(req, res) {
-        members_1.Member.update(req.body, { 'where': { member_id: req.params.id } }).then(member => res.json(member));
+        members_1.Member.update(req.body, { 'where': { id_members: req.params.id } }).then(members => res.json(members));
     }
     delete(req, res) {
-        members_1.Member.destroy({ 'where': { member_id: req.params.id } });
+        members_1.Member.destroy({ 'where': { id_members: req.params.id } });
     }
 }
 exports.MemberController = MemberController;

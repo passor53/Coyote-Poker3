@@ -1,11 +1,12 @@
 require('dotenv').config();
 
-//import cors from 'cors';
+import cors from 'cors';
 import express from 'express';
 import { PORT } from "./config/constants";
 import { memberRouter } from './routes/members';
 import { sessionRouter } from './routes/sessions';
 import { eventRouter } from './routes/events';
+import { generateToken } from './authenticate/jwt';
 /*import { adminRouter } from './routes/admins';*/
 
 let bodyParser = require('body-parser');
@@ -16,10 +17,10 @@ app.use(express.json());
 var jsonParser = bodyParser.json()
 const allowedOrigins = ['http://localhost:8000'];
 
-/*const options: cors.CorsOptions = {
+const options: cors.CorsOptions = {
     origin: allowedOrigins
-};*/
-//app.use(cors(options));
+};
+app.use(cors(options));
 
 app.get("/", (req, res) => res.send("Hello World"));
 
@@ -51,3 +52,5 @@ app.delete("/admin/del/:id", adminRouter);
 app.listen(PORT, () => {
     console.log(`Le serveur écoute sur le port : ${PORT}`);
 });
+
+//console.log('Le token JWT :', generateToken());

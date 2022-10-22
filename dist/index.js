@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 require('dotenv').config();
-//import cors from 'cors';
+const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const constants_1 = require("./config/constants");
 const members_1 = require("./routes/members");
@@ -16,10 +16,10 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 var jsonParser = bodyParser.json();
 const allowedOrigins = ['http://localhost:8000'];
-/*const options: cors.CorsOptions = {
+const options = {
     origin: allowedOrigins
-};*/
-//app.use(cors(options));
+};
+app.use((0, cors_1.default)(options));
 app.get("/", (req, res) => res.send("Hello World"));
 app.get("/member", members_1.memberRouter);
 app.get("/member/show/:id", members_1.memberRouter);
@@ -47,3 +47,4 @@ app.delete("/admin/del/:id", adminRouter);
 app.listen(constants_1.PORT, () => {
     console.log(`Le serveur écoute sur le port : ${constants_1.PORT}`);
 });
+//console.log('Le token JWT :', generateToken());
