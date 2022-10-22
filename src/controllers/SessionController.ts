@@ -6,7 +6,7 @@ import { Session } from "../models/sessions";
 export class SessionController extends CrudController {
 
     public read(req: Request, res: Response): void {
-        Session.findAll().then(session => res.json(session));
+        Session.findAll().then(sessions => res.json(sessions));
         /* sequelize
              .authenticate()
              .then(() => {
@@ -18,15 +18,15 @@ export class SessionController extends CrudController {
          res.json({ message: 'boum boum !' });*/
     }
     public show(req: Request, res: Response): void {
-        Session.findOne({ 'where': { session_id: req.params.id } }).then(session => res.json(session));
+        Session.findOne({ 'where': { id_sessions: req.params.id } }).then(sessions => res.json(sessions));
     }
     public create(req: Request, res: Response): void {
-        Session.create(req.body).then(session => res.json(session));
+        Session.create(req.body).then(sessions => res.json(sessions));
     }
     public update(req: Request, res: Response): void {
-        Session.update(req.body, { 'where': { session_id: req.params.id } }).then(session => res.json(session));
+        Session.update(req.body, { 'where': { id_sessions: req.params.id } }).then(sessions => res.json(sessions));
     }
     public delete(req: Request, res: Response): void {
-        Session.destroy({ 'where': { session_id: req.params.id } });
+        Session.destroy({ 'where': { id_sessions: req.params.id } });
     }
 }

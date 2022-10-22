@@ -6,7 +6,7 @@ const sessions_1 = require("../models/sessions");
 //import { sequelize } from "../config/database";
 class SessionController extends CrudController_1.CrudController {
     read(req, res) {
-        sessions_1.Session.findAll().then(session => res.json(session));
+        sessions_1.Session.findAll().then(sessions => res.json(sessions));
         /* sequelize
              .authenticate()
              .then(() => {
@@ -18,16 +18,16 @@ class SessionController extends CrudController_1.CrudController {
          res.json({ message: 'boum boum !' });*/
     }
     show(req, res) {
-        sessions_1.Session.findOne({ 'where': { session_id: req.params.id } }).then(session => res.json(session));
+        sessions_1.Session.findOne({ 'where': { id_sessions: req.params.id } }).then(sessions => res.json(sessions));
     }
     create(req, res) {
-        sessions_1.Session.create(req.body).then(session => res.json(session));
+        sessions_1.Session.create(req.body).then(sessions => res.json(sessions));
     }
     update(req, res) {
-        sessions_1.Session.update(req.body, { 'where': { session_id: req.params.id } }).then(session => res.json(session));
+        sessions_1.Session.update(req.body, { 'where': { id_sessions: req.params.id } }).then(sessions => res.json(sessions));
     }
     delete(req, res) {
-        sessions_1.Session.destroy({ 'where': { session_id: req.params.id } });
+        sessions_1.Session.destroy({ 'where': { id_sessions: req.params.id } });
     }
 }
 exports.SessionController = SessionController;

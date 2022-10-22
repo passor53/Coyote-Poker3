@@ -6,7 +6,7 @@ const events_1 = require("../models/events");
 //import { sequelize } from "../config/database";
 class EventController extends CrudController_1.CrudController {
     read(req, res) {
-        events_1.Event.findAll().then(event => res.json(event));
+        events_1.Event.findAll().then(events => res.json(events));
         /*sequelize
             .authenticate()
             .then(() => {
@@ -18,16 +18,16 @@ class EventController extends CrudController_1.CrudController {
         res.json({ message: 'boum boum !' });*/
     }
     show(req, res) {
-        events_1.Event.findOne({ 'where': { event_id: req.params.id } }).then(event => res.json(event));
+        events_1.Event.findOne({ 'where': { id_events: req.params.id } }).then(events => res.json(events));
     }
     create(req, res) {
-        events_1.Event.create(req.body).then(event => res.json(event));
+        events_1.Event.create(req.body).then(events => res.json(events));
     }
     update(req, res) {
-        events_1.Event.update(req.body, { 'where': { event_id: req.params.id } }).then(event => res.json(event));
+        events_1.Event.update(req.body, { 'where': { id_events: req.params.id } }).then(events => res.json(events));
     }
     delete(req, res) {
-        events_1.Event.destroy({ 'where': { event_id: req.params.id } });
+        events_1.Event.destroy({ 'where': { id_events: req.params.id } });
     }
 }
 exports.EventController = EventController;

@@ -6,7 +6,7 @@ import { Event } from "../models/events";
 export class EventController extends CrudController {
 
     public read(req: Request, res: Response): void {
-        Event.findAll().then(event => res.json(event));
+        Event.findAll().then(events => res.json(events));
         /*sequelize
             .authenticate()
             .then(() => {
@@ -18,15 +18,15 @@ export class EventController extends CrudController {
         res.json({ message: 'boum boum !' });*/
     }
     public show(req: Request, res: Response): void {
-        Event.findOne({ 'where': { event_id: req.params.id } }).then(event => res.json(event));
+        Event.findOne({ 'where': { id_events: req.params.id } }).then(events => res.json(events));
     }
     public create(req: Request, res: Response): void {
-        Event.create(req.body).then(event => res.json(event));
+        Event.create(req.body).then(events => res.json(events));
     }
     public update(req: Request, res: Response): void {
-        Event.update(req.body, { 'where': { event_id: req.params.id } }).then(event => res.json(event));
+        Event.update(req.body, { 'where': { id_events: req.params.id } }).then(events => res.json(events));
     }
     public delete(req: Request, res: Response): void {
-        Event.destroy({ 'where': { event_id: req.params.id } });
+        Event.destroy({ 'where': { id_events: req.params.id } });
     }
 }
